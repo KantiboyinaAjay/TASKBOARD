@@ -31,7 +31,7 @@ export class InprogressComponent implements OnInit {
       }).showToast();
     } 
     else {
-      this.openDialog('In Review', 'Add New Task');
+      this.openDialog('In Progress', 'Add New Task');
     }
   }  
 
