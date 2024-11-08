@@ -23,11 +23,9 @@ export class PopUpComponent implements OnInit {
   ) {}
 
   operationButtonText: string = '';
-  p_id: string = '';
 
   ngOnInit(): void {
     this.operationButtonText = this.data.operation == 'Save' ? 'Save' : 'Add';
-    this.taskService.selectproject.subscribe((project: any) => this.p_id = project.pid)
   }
   popUpHeading = this.data.heading;
 
@@ -47,8 +45,7 @@ export class PopUpComponent implements OnInit {
         startDate: this.taskData.startDate,
         deadlineDate: this.taskData.endDate,
         status: this.taskData.status,
-        taskId: this.data.taskId,
-        pid: this.p_id
+        id: this.data.id,
       };
       this.taskService.update(taskData);
       this.dialog.closeAll();
@@ -76,8 +73,7 @@ export class PopUpComponent implements OnInit {
         startDate: this.taskData.startDate,
         deadlineDate: this.taskData.endDate,
         status: this.taskData.status,
-        taskId: nanoid(),
-        pid: this.p_id
+        id: nanoid(),
       };
 
       this.taskService.addTask(taskData);
